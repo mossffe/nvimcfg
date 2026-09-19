@@ -99,14 +99,15 @@ class Slave:
         print("Process returned {} in {}.".format(formattedReturnCode, formattedTime))
 
     def get_formatted_return_code(self, return_code) -> str:
+        pos_return_code = return_code
         if return_code < 0:
             match Config.platform_name:
                 case "Linux":
-                    return_code += 2 ** 8
+                    pos_return_code += 2 ** 8
                 case "Windows":
-                    return_code += 2 ** 32
+                    pos_return_code += 2 ** 32
 
-        result = "code {0} (0x{0:08X})".format(return_code)
+        result = "code {0} (0x{1:08X})".format(return_code, pos_return_code)
 
         color = Color["GREEN"] if return_code == 0 else Color["RED"]
         result = "{}{}{}".format(color, result, Color["CLEAR"])
