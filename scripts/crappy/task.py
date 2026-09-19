@@ -24,7 +24,12 @@ class Task:
 
         return_code = 1
         try:
-            return_code = subprocess.run(self.tokenized_build_cmd).returncode
+            child_proc = subprocess.Popen(self.tokenized_build_cmd)
+            child_proc.wait()
+            return_code = child_proc.returncode
+        except KeyboardInterrupt:
+            child_proc.wait()
+            return_code = child_proc.returncode
         except FileNotFoundError:
             fail_gracefully(
                 "{1}[BUILD][✗]{0} failed to run unknown command {2}`{3}`{0}!"
@@ -40,7 +45,12 @@ class Task:
 
         return_code = 1
         try:
-            return_code = subprocess.run(self.tokenized_launch_cmd).returncode
+            child_proc = subprocess.Popen(self.tokenized_launch_cmd)
+            child_proc.wait()
+            return_code = child_proc.returncode
+        except KeyboardInterrupt:
+            child_proc.wait()
+            return_code = child_proc.returncode
         except FileNotFoundError:
             fail_gracefully(
                 "{1}[BUILD][✗]{0} failed to find binary {2}`{3}`{0}!"
