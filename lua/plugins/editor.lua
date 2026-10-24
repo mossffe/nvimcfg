@@ -134,7 +134,8 @@ return
 					"build[/\\]",
 					"lib[/\\]",
 					"inc[/\\]",
-					"target[/\\]"
+					"target[/\\]",
+					"docs[/\\]"
 				}
 			}
 		},
