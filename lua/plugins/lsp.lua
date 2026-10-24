@@ -50,7 +50,7 @@ return
 			ensure_installed = {
 				"lua_ls",
 				"pylsp",
-				-- "clangd", -- Just use the system installed ones
+				"clangd",
 				-- "rust_analyzer",
 				"ts_ls"
 			}
