@@ -30,7 +30,8 @@ return
 					"clangd",
 					"-header-insertion=never",
 					"--compile-commands-dir=build",
-					"--background-index"
+					"--background-index",
+					"--function-arg-placeholders=0"
 				}
 			})
 
